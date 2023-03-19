@@ -24,7 +24,9 @@
     <div class="main">
       <div class="main-boxes">
         <div>
-          <label class ="labelText" for="select-pokemon">Write pokemon name...</label>
+          <label class="labelText" for="select-pokemon"
+            >Write pokemon name...</label
+          >
           <input
             id="select-pokemon"
             type="text"
@@ -39,25 +41,45 @@
           </p>
         </div>
         <div class="main-content-box show">
-          <h1 class="result-name" id="resultsName" name="info_1"></h1>
+          <h1 class="result-name data" id="resultsName"></h1>
           <div class="results" id="results">
-            <img class="reslut-img" src="" alt="Pokemon_Image" />
-            <img class="reslut-img-back" src="" alt="Pokemon_Image" />
-            <img class="reslut-img-shiny" src="" alt="Pokemon_Image" />
-            <img class="reslut-img-back-shiny" src="" alt="Pokemon_Image" />
+            <img class="reslut-img resultImages" src="" alt="Pokemon_Image" />
+            <img
+              class="reslut-img-back resultImages"
+              src=""
+              alt="Pokemon_Image"
+            />
+            <img
+              class="reslut-img-shiny resultImages"
+              src=""
+              alt="Pokemon_Image"
+            />
+            <img
+              class="reslut-img-back-shiny resultImages"
+              src=""
+              alt="Pokemon_Image"
+            />
           </div>
           <div class="results-data" id="results-data">
             <div class="resultDiv">
               <label for="pokemonId">No:</label>
-              <p class="results-data-id" id="pokemonId"></p>
+              <p class="results-data-id data" id="pokemonId" name="data"></p>
             </div>
             <div class="resultDiv">
               <label for="pokemonType">Type:</label>
-              <p class="results-data-type" id="pokemonType"></p>
+              <p
+                class="results-data-type data"
+                id="pokemonType"
+                name="data"
+              ></p>
             </div>
             <div class="resultDiv">
               <label for="pokemonExperience">Experience:</label>
-              <p class="results-data-experience" id="pokemonExperience"></p>
+              <p
+                class="results-data-experience data"
+                id="pokemonExperience"
+                name="data"
+              ></p>
             </div>
           </div>
         </div>

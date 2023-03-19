@@ -1,9 +1,11 @@
 import {
-  errorText,goButton,renderContainer,resultsName,resultImg,resultImgBack,resultImgShiny,
-	resultImgBackShiny,resultsDataId,resultsDataType,resultsDataExprerience,
+  errorText,
+  goButton,
+  renderContainer,
+  resultImages,
+  resultData,
 } from "./domSelects.js";
 addEventListener(`DOMContentLoaded`, () => {
-	
   async function getPokemon() {
     const pokemonName = document
       .getElementById(`select-pokemon`)
@@ -38,8 +40,6 @@ addEventListener(`DOMContentLoaded`, () => {
       pokemonSave.base_experience
     );
     renderContainer.classList.remove("show");
-    console.log(pokemonSave);
-    console.log(data);
   }
 
   function renderPokemon(
@@ -52,21 +52,21 @@ addEventListener(`DOMContentLoaded`, () => {
     type,
     experience
   ) {
-    resultsName.textContent = name;
-    resultImg.setAttribute(`src`, `${front}`);
-    resultImgBack.setAttribute(`src`, `${back}`);
-    resultImgShiny.setAttribute(`src`, `${front_shiny}`);
-    resultImgBackShiny.setAttribute(`src`, `${back_shiny}`);
-    resultsDataId.textContent = id;
-    resultsDataType.textContent = type;
-    resultsDataExprerience.textContent = experience;
+    resultData[0].textContent = name;
+    resultImages[0].setAttribute(`src`, `${front}`);
+    resultImages[1].setAttribute(`src`, `${back}`);
+    resultImages[2].setAttribute(`src`, `${front_shiny}`);
+    resultImages[3].setAttribute(`src`, `${back_shiny}`);
+    resultData[1].textContent = id;
+    resultData[2].textContent = type;
+    resultData[3].textContent = experience;
   }
 
   function catchError() {
     errorText.classList.remove("show");
     setTimeout(() => {
       errorText.classList.add("show");
-    }, 4000);
+    }, 3000);
   }
 
   goButton.addEventListener("click", () => {
