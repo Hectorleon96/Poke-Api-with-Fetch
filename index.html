@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="index.js" defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>POKE API</header>
+    <div class="introduce-container">
+      <p class="introduce-container-text">
+        This app is for practice. Today I use the 'poke api' and show you the
+        info in the screen. ¡<span class="introduce-span-text">Enjoy.</span>!
+      </p>
+    </div>
+
+    <div class="main">
+      <div class="main-boxes">
+        <div>
+          <label class ="labelText" for="select-pokemon">Write pokemon name...</label>
+          <input
+            id="select-pokemon"
+            type="text"
+            placeholder="Example: Milotic"
+            value=""
+          />
+          <button id="select-pokemon-button" class="select-pokemon-button">
+            Go!
+          </button>
+          <p class="errorText show">
+            ¡Sorry, The pokemon don't exist or the name is incorrect!
+          </p>
+        </div>
+        <div class="main-content-box show">
+          <h1 class="result-name" id="resultsName" name="info_1"></h1>
+          <div class="results" id="results">
+            <img class="reslut-img" src="" alt="Pokemon_Image" />
+            <img class="reslut-img-back" src="" alt="Pokemon_Image" />
+            <img class="reslut-img-shiny" src="" alt="Pokemon_Image" />
+            <img class="reslut-img-back-shiny" src="" alt="Pokemon_Image" />
+          </div>
+          <div class="results-data" id="results-data">
+            <div class="resultDiv">
+              <label for="pokemonId">No:</label>
+              <p class="results-data-id" id="pokemonId"></p>
+            </div>
+            <div class="resultDiv">
+              <label for="pokemonType">Type:</label>
+              <p class="results-data-type" id="pokemonType"></p>
+            </div>
+            <div class="resultDiv">
+              <label for="pokemonExperience">Experience:</label>
+              <p class="results-data-experience" id="pokemonExperience"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
