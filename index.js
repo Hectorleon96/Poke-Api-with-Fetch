@@ -1,75 +1,48 @@
-import {
-  errorText,
-  goButton,
-  renderContainer,
-  resultImages,
-  resultData,
-} from "./domSelects.js";
+import { domElements } from "./domElement.js";
 addEventListener(`DOMContentLoaded`, () => {
   async function getPokemon() {
+    const DOM = domElements;
     const pokemonName = document
-      .getElementById(`select-pokemon`)
+      .getElementById(`select-pokemon`) // Select Pokémon
       .value.toLowerCase();
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
     );
     if (pokemonName === "" || response.status !== 200) {
-      catchError();
+      catchError(DOM);
       return;
     }
 
     const data = await response.json();
-    let pokemonSave = {
-      name: data.name,
-      pokemon_id: data.id,
-      type: data.types,
-      base_experience: data.base_experience,
-      front_default: data.sprites.front_default,
-      back_default: data.sprites.back_default,
-      front_shiny: data.sprites.front_shiny,
-      back_shiny: data.sprites.back_shiny,
-    };
-    renderPokemon(
-      pokemonSave.name,
-      pokemonSave.front_default,
-      pokemonSave.back_default,
-      pokemonSave.front_shiny,
-      pokemonSave.back_shiny,
-      pokemonSave.pokemon_id,
-      pokemonSave.type[0].type.name,
-      pokemonSave.base_experience
-    );
-    renderContainer.classList.remove("show");
+    renderImages(data, DOM);
   }
 
-  function renderPokemon(
-    name,
-    front,
-    back,
-    front_shiny,
-    back_shiny,
-    id,
-    type,
-    experience
-  ) {
-    resultData[0].textContent = name;
-    resultImages[0].setAttribute(`src`, `${front}`);
-    resultImages[1].setAttribute(`src`, `${back}`);
-    resultImages[2].setAttribute(`src`, `${front_shiny}`);
-    resultImages[3].setAttribute(`src`, `${back_shiny}`);
-    resultData[1].textContent = id;
-    resultData[2].textContent = type;
-    resultData[3].textContent = experience;
+  function renderImages(data, DOM) {
+    let imagesData = Object.values(data.sprites);
+    let finalImagesData = [];
+    imagesData.forEach((element) => {
+      if (typeof element === typeof "string") {
+        finalImagesData.push(element);
+      }
+    });
+
+    for (let i = 0; i < finalImagesData.length; i++) {
+      let imageElements = document.createElement("img");
+      imageElements.classList.add("images");
+      imageElements.setAttribute("src", finalImagesData[i]);
+      DOM.render_images.appendChild(imageElements);
+    }
+    DOM.render.classList.remove("show");
   }
 
-  function catchError() {
-    errorText.classList.remove("show");
+  function catchError(DOM) {
+    DOM.error.classList.remove("show");
     setTimeout(() => {
-      errorText.classList.add("show");
+      DOM.error.classList.add("show");
     }, 3000);
   }
 
-  goButton.addEventListener("click", () => {
+  domElements.start.addEventListener("click", () => {
     getPokemon();
   });
 });
